@@ -1,0 +1,22 @@
+{
+  "name": "primary-project",
+  "version": "1.0.0",
+  "description": "my first project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InvincibleSun/primary-project.git"
+  },
+  "author": "Yulia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/InvincibleSun/primary-project/issues"
+  },
+  "homepage": "https://github.com/InvincibleSun/primary-project#readme",
+  "dependencies": {
+    "surge": "^0.23.1"
+  }
+}
