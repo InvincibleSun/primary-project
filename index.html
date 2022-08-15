@@ -13,7 +13,12 @@
     <div class="wrapper">
       <header class="header">
         <nav class="header__nav">
-          <img src="./img/logo.png" alt="logo" class="header__logo" width="100px" />
+          <img
+            src="./img/logo.png"
+            alt="logo"
+            class="header__logo"
+            width="100px"
+          />
           <menu class="header__menu">
             <ul class="header__list">
               <li class="header__list-item">
@@ -51,12 +56,15 @@
     </div>
 
     <ul id="list-example" class="main__list">
-      <li class="main__list-name"><b></b></li>
+      <li class="main__list-name">
+        <b></b>
+        <div class="main__list-btn" onclick="removeList(event)">
+          <span class="main__list-close"></span>
+        </div>
+      </li>
     </ul>
 
-    <div id="card-example" class="list-card">
-      
-    </div>
+    <div id="card-example" class="list-card"></div>
 
     <script src="./scripts/list.js"></script>
   </body>

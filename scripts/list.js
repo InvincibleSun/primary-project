@@ -1,11 +1,11 @@
 // Take data from LocalStorage, if it is empty take a new empty array
 let storage = localStorage.getItem("storage") || [];
+const startIndex = 0;
 
 if (typeof storage === "string") {
   storage = JSON.parse(storage); // string => object
 }
 
-// console.log(storage);
 // show old list items
 
 const listExample = document.getElementById("list-example");
@@ -21,19 +21,15 @@ function addList() {
     return;
   }
 
+  // define new id
+  const id = storage.length ? storage[storage.length - 1].id + 1 : startIndex;
+
+  const newList = { listName, id };
   // Copy List from example in the bottom of HTML
-  const newList = listExample.cloneNode(true);
-  newList.removeAttribute("id");
-
-  // Push List Name in the List
-  const nodeTitle = newList.querySelector(".main__list-name b");
-  nodeTitle.innerHTML = listName;
-
-  // Add List in the Document
-  mainSection.appendChild(newList);
+  drawList(newList);
 
   // Add List Name in Local Storage
-  storage.push({ listName });
+  storage.push(newList);
 
   // Create storage data as a string
   localStorage.setItem("storage", JSON.stringify(storage));
@@ -43,13 +39,31 @@ document.addEventListener("DOMContentLoaded", pinList); // Create Event - if Rel
 
 function pinList() {
   // Take every List from storage (loop) and append in document(after reload)
-  storage.forEach(({ listName }) => {
-    const newList = listExample.cloneNode(true);
-    newList.removeAttribute("id");
+  storage.forEach(drawList);
+}
 
-    const nodeTitle = newList.querySelector(".main__list-name b");
-    nodeTitle.innerHTML = listName;
+function drawList(listItem) {
+  const { listName, id } = listItem;
+  const newList = listExample.cloneNode(true);
+  newList.removeAttribute("id");
+  newList.setAttribute("data-id", id);
+  newList.querySelector(".main__list-btn").setAttribute("data-id", id);
 
-    mainSection.appendChild(newList);
-  });
+  const nodeTitle = newList.querySelector(".main__list-name b");
+  nodeTitle.innerHTML = listName;
+
+  mainSection.appendChild(newList);
+}
+
+// REMOVE LIST
+function removeList(e) {
+  let { id } = e.currentTarget.dataset;
+  id = Number(id);
+  console.log(id);
+
+  // delete from UI
+  // delete from store
+
+  // delete from local store
+  localStorage.setItem("storage", JSON.stringify(storage));
 }
