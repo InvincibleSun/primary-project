@@ -13,28 +13,28 @@
     <div class="wrapper">
       <header class="header">
         <nav class="header__nav">
-          <img src="./img/logo.png" alt="logo" class="logo" width="100px" />
-          <menu class="header__nav__menu menu">
-            <ul class="menu__list">
-              <li class="menu__list__item">
-                <a href="#" class="menu__link">HOME</a>
+          <img src="./img/logo.png" alt="logo" class="header__logo" width="100px" />
+          <menu class="header__menu">
+            <ul class="header__list">
+              <li class="header__list-item">
+                <a href="#" class="header__list-link">HOME</a>
               </li>
-              <li class="menu__list__item">
-                <a href="#" class="menu__link">TUTORIAL</a>
+              <li class="header__list-item">
+                <a href="#" class="header__list-link">TUTORIAL</a>
               </li>
-              <li class="menu__list__item">
-                <a href="#" class="menu__link">HELP</a>
+              <li class="header__list-item">
+                <a href="#" class="header__list-link">HELP</a>
               </li>
-              <li class="menu__list__item">
-                <a href="#" class="menu__link button" onclick="addList()"
+              <li class="header__list-item">
+                <a href="#" class="header__list-link button" onclick="addList()"
                   >+ ADD NEW LIST</a
                 >
               </li>
-              <li class="menu__list__item">
-                <a href="#" class="menu__link button">+ ADD CARD</a>
+              <li class="header__list-item">
+                <a href="#" class="header__list-link button">+ ADD CARD</a>
               </li>
-              <li class="menu__list__item">
-                <a href="#" class="menu__link">SIGN IN</a>
+              <li class="header__list-item">
+                <a href="#" class="header__list-link">SIGN IN</a>
               </li>
             </ul>
           </menu>
@@ -50,9 +50,13 @@
       </footer>
     </div>
 
-    <ul id="list-example" class="main__section__list">
-      <li class="main__section__list__name"><b></b></li>
+    <ul id="list-example" class="main__list">
+      <li class="main__list-name"><b></b></li>
     </ul>
+
+    <div id="card-example" class="list-card">
+      
+    </div>
 
     <script src="./scripts/list.js"></script>
   </body>
