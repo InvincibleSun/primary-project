@@ -1,4 +1,4 @@
-// Take data from LocalStorage, if it is empty take a new empty array
+// Take data from LocalStorage + create my personal data storage in var, if it is empty take a new empty array
 let storage = localStorage.getItem("storage") || [];
 const startIndex = 0;
 
@@ -22,7 +22,7 @@ function addList() {
   }
 
   // define new id
-  const id = storage.length ? storage[storage.length - 1].id + 1 : startIndex;
+  const id = storage.length ? storage[storage.length - 1].id + 1 : startIndex; // ???
 
   const newList = { listName, id };
   // Copy List from example in the bottom of HTML
@@ -41,12 +41,13 @@ function pinList() {
   // Take every List from storage (loop) and append in document(after reload)
   storage.forEach(drawList);
 }
+// const closeBtn = document.querySelectorAll(".main__list-btn");
 
 function drawList(listItem) {
   const { listName, id } = listItem;
   const newList = listExample.cloneNode(true);
   newList.removeAttribute("id");
-  newList.setAttribute("data-id", id);
+  newList.setAttribute("data-id", id); //???
   newList.querySelector(".main__list-btn").setAttribute("data-id", id);
 
   const nodeTitle = newList.querySelector(".main__list-name b");
@@ -62,8 +63,10 @@ function removeList(e) {
   console.log(id);
 
   // delete from UI
+  newList.classList.remove(".main__list");
+
   // delete from store
 
   // delete from local store
-  localStorage.setItem("storage", JSON.stringify(storage));
+  // localStorage.setItem("storage", JSON.stringify(storage));
 }
