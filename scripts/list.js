@@ -25,16 +25,14 @@ function addList() {
     return;
   }
 
-  const nextId = storage.length
-    ? storage[storage.length - 1].id + 1
-    : startIndex;
+  const nextId = storage.length ? storage.at(-1).id + 1 : startIndex; //?
 
   const newList = { listName, id: nextId };
-  drawList(newList);
+  drawList(newList); //?
 
   storage.push(newList);
 
-  localStorage.setItem("store", JSON.stringify(storage));
+  localStorage.setItem("store", JSON.stringify(storage)); //?
 }
 
 // Add new list to body
@@ -50,9 +48,9 @@ function drawList(listItem) {
 
 // List removal
 function removeList(e) {
-  const parent = e.target.closest(".main__list");
+  const parent = e.target.closest(".main__list"); //?
   let { id } = parent.dataset;
-  id = Number(id);
+  id = Number(id); //?
   parent.remove();
   const toDeleteIndex = storage.findIndex((elem) => elem.id === id);
 
@@ -61,3 +59,18 @@ function removeList(e) {
     localStorage.setItem("store", JSON.stringify(storage));
   }
 }
+
+// FOOTER
+let shareWidgies = document.querySelectorAll(
+  ".share-widget .share-widget__sub"
+);
+
+shareWidgies.forEach((el) => {
+  el.addEventListener("click", function () {
+    if (this.classList.contains("flipped")) {
+      this.classList.remove("flipped");
+    } else {
+      this.classList.add("flipped");
+    }
+  });
+});
