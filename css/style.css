@@ -28,7 +28,7 @@ body {
   margin-right: 50px;
 }
 .header__logo:hover {
-  fill: var(--main-color)
+  fill: var(--main-color);
 }
 
 .header__menu {
@@ -96,6 +96,7 @@ body {
   background-color: aliceblue;
   border-radius: 10px;
   position: relative;
+  padding-bottom: 20px;
 }
 
 .main__list-name,
@@ -168,7 +169,7 @@ body {
 }
 
 .share-widget__sub {
-  margin: 10px; 
+  margin: 10px;
 }
 
 .share-widget__title {
@@ -196,13 +197,13 @@ body {
 .share-widget__icons a svg {
   width: 24px;
   margin: 7px;
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
   fill: rgb(69, 5, 160);
 }
 
 .share-widget__icons a svg:hover {
   transform: scale(1.5);
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
   fill: #000;
 }
 
@@ -242,7 +243,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 3px 4px rgba(134, 18, 243, 0.2), 0 3px 4px rgba(134, 18, 243, 0.24);
+  box-shadow: 0 3px 4px rgba(134, 18, 243, 0.2),
+    0 3px 4px rgba(134, 18, 243, 0.24);
 }
 
 .share-widget__icons {
@@ -255,12 +257,13 @@ body {
   transform: rotateX(180deg);
 }
 
-
- 
 /* ----EXAMPLES----- */
 #list-example {
   display: none;
 }
 #card-example {
   display: none;
+}
+
+.main__list-btn {
 }

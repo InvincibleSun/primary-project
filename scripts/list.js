@@ -25,32 +25,31 @@ function addList() {
     return;
   }
 
-  const nextId = storage.length ? storage.at(-1).id + 1 : startIndex; //?
-
-  const newList = { listName, id: nextId };
-  drawList(newList); //?
+  const nextId = storage.length ? storage.at(-1).id + 1 : startIndex;
+  const newList = { name: listName, id: nextId, cards: [] };
+  drawList(newList);
 
   storage.push(newList);
 
-  localStorage.setItem("store", JSON.stringify(storage)); //?
+  localStorage.setItem("store", JSON.stringify(storage));
 }
 
 // Add new list to body
 function drawList(listItem) {
-  const { listName, id } = listItem;
+  const { name, id } = listItem;
   const newList = listExample.cloneNode(true);
   newList.removeAttribute("id");
   newList.setAttribute("data-id", id);
   const nodeTitle = newList.querySelector(".main__list-name b");
-  nodeTitle.innerHTML = listName;
+  nodeTitle.innerHTML = name;
   mainSection.appendChild(newList);
 }
 
 // List removal
 function removeList(e) {
-  const parent = e.target.closest(".main__list"); //?
+  const parent = e.target.closest(".main__list");
   let { id } = parent.dataset;
-  id = Number(id); //?
+  id = Number(id);
   parent.remove();
   const toDeleteIndex = storage.findIndex((elem) => elem.id === id);
 
@@ -61,16 +60,8 @@ function removeList(e) {
 }
 
 // FOOTER
-let shareWidgies = document.querySelectorAll(
-  ".share-widget .share-widget__sub"
-);
+const shareWidgies = document.querySelector(".share-widget__sub");
 
-shareWidgies.forEach((el) => {
-  el.addEventListener("click", function () {
-    if (this.classList.contains("flipped")) {
-      this.classList.remove("flipped");
-    } else {
-      this.classList.add("flipped");
-    }
-  });
+shareWidgies.addEventListener("click", function () {
+  this.classList.toggle("flipped");
 });
