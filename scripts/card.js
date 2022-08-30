@@ -16,9 +16,13 @@ function addCard(e) {
   const newCard = { name: cardName, id: 0 };
   drawCard(newCard, listId, parent);
 
-  // storage.push(newList);
+  let indexOfCurrentList = storage.findIndex((item) => {
+    return item.id === listId;
+  });
 
-  // localStorage.setItem("store", JSON.stringify(storage));
+  storage[indexOfCurrentList].cards.push(newCard);
+
+  localStorage.setItem("store", JSON.stringify(storage));
 }
 
 function drawCard(cardItem, listId, currentList) {
@@ -30,6 +34,20 @@ function drawCard(cardItem, listId, currentList) {
   const nodeTitle = newCard.querySelector(".list-card__name");
   nodeTitle.innerHTML = name;
 
-  const addCardBtn = currentList.querySelector(".main__list-item");
+  const addCardBtn = currentList.querySelector(".add-card");
   currentList.insertBefore(newCard, addCardBtn);
+}
+
+// Card removal
+function removeCard(e) {
+  const parent = e.target.closest(".list-card");
+  let { id } = parent.dataset;
+  id = Number(id);
+  parent.remove();
+  // const toDeleteIndex = storage.findIndex((elem) => elem.id === id);
+
+  // if (toDeleteIndex !== -1) {
+  //   storage.splice(toDeleteIndex, 1);
+  //   localStorage.setItem("store", JSON.stringify(storage));
+  // }
 }
