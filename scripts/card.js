@@ -44,10 +44,10 @@ function removeCard(e) {
   let { id } = parent.dataset;
   id = Number(id);
   parent.remove();
-//   const toDeleteIndex = storage.findIndex((elem) => elem.id === id);
+  //   const toDeleteIndex = storage.findIndex((elem) => elem.id === id);
 
-//   if (toDeleteIndex !== -1) {
-//     storage.cards.splice(toDeleteIndex, 1);
-//     localStorage.setItem("store", JSON.stringify(storage));
-//   }
-/}
+  //   if (toDeleteIndex !== -1) {
+  //     storage.cards.splice(toDeleteIndex, 1);
+  //     localStorage.setItem("store", JSON.stringify(storage));
+  //   }
+}
