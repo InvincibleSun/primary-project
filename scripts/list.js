@@ -36,12 +36,15 @@ function addList() {
 
 // Add new list to body
 function drawList(listItem) {
-  const { name, id } = listItem;
+  const { name, id, cards } = listItem;
   const newList = listExample.cloneNode(true);
   newList.removeAttribute("id");
   newList.setAttribute("data-id", id);
   const nodeTitle = newList.querySelector(".main__list-name b");
   nodeTitle.innerHTML = name;
+
+  cards.forEach((card) => drawCard(card, id, newList));
+
   mainSection.appendChild(newList);
 }
 
