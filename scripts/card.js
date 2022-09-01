@@ -13,12 +13,16 @@ function addCard(e) {
   let { id: listId } = parent.dataset;
   listId = Number(listId);
 
-  const newCard = { name: cardName, id: 0 };
-  drawCard(newCard, listId, parent);
-
   let indexOfCurrentList = storage.findIndex((item) => {
     return item.id === listId;
   });
+
+  const cardsArray = storage[indexOfCurrentList].cards;
+
+  const nextId = !!cardsArray.length ? cardsArray.at(-1).id + 1 : 0;
+  const newCard = { name: cardName, id: nextId };
+
+  drawCard(newCard, listId, parent);
 
   storage[indexOfCurrentList].cards.push(newCard);
 
@@ -41,13 +45,19 @@ function drawCard(cardItem, listId, currentList) {
 // Card removal
 function removeCard(e) {
   const parent = e.target.closest(".list-card");
-  let { id } = parent.dataset;
+  let { id, listId } = parent.dataset;
   id = Number(id);
+  listId = Number(listId);
   parent.remove();
-  //   const toDeleteIndex = storage.findIndex((elem) => elem.id === id);
 
-  //   if (toDeleteIndex !== -1) {
-  //     storage.cards.splice(toDeleteIndex, 1);
-  //     localStorage.setItem("store", JSON.stringify(storage));
-  //   }
+  let indexOfCurrentList = storage.findIndex((item) => {
+    return item.id === listId;
+  });
+
+  const toDeleteIndex = storage[indexOfCurrentList].cards.findIndex((elem) => elem.id === id);
+
+  if (toDeleteIndex !== -1) {
+    storage[indexOfCurrentList].cards.splice(toDeleteIndex, 1);
+    localStorage.setItem("store", JSON.stringify(storage));
+  }
 }

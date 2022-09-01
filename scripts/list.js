@@ -25,7 +25,7 @@ function addList() {
     return;
   }
 
-  const nextId = storage.length ? storage.at(-1).id + 1 : startIndex;
+  const nextId = !!storage.length ? storage.at(-1).id + 1 : startIndex;
   const newList = { name: listName, id: nextId, cards: [] };
   drawList(newList);
 
