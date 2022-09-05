@@ -323,3 +323,121 @@ body {
 #card-example {
   display: none;
 }
+
+/* ----MODAL WINDOW----- */
+
+.modal-bgd {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(50, 58, 64, 0.7);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.modal-window {
+  background-color: #fff;
+  border-radius: 35px;
+  padding: 32px 92px 60px;
+  position: relative;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form__btn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  right: 10px;
+  cursor: pointer;
+}
+
+.form__btn-close {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.form__btn-close::before {
+  content: "";
+  width: 20px;
+  height: 2px;
+  background-color: #000;
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  transform: rotate(45deg);
+}
+.form__btn-close::after {
+  content: "";
+  width: 20px;
+  height: 2px;
+  background-color: #000;
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  transform: rotate(-45deg);
+}
+.form__btn:hover .form__btn-close::after,
+.form__btn:hover .form__btn-close::before {
+  background-color: var(--main-color);
+}
+
+.form__text {
+  font-size: 18px;
+  line-height: 1;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+.form__field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.field-name {
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.field-input {
+  background: #ffffff;
+  border: 1px solid var(--main-color);
+  border-radius: 15px;
+  height: 48px;
+
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+
+  padding: 4px 8px;
+}
+.button_sign-in {
+  margin-top: 24px;
+  padding: 15px 50px;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: var(--main-color);
+}
+
+/* -----MODAL ACTIVE*/
+.modal-active {
+  opacity: 1;
+  pointer-events: auto;
+}
