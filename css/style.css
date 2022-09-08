@@ -340,8 +340,9 @@ body {
 
   opacity: 0;
   pointer-events: none;
+  /* visibility: hidden; */
 
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .modal-window {
@@ -349,7 +350,9 @@ body {
   border-radius: 35px;
   padding: 32px 92px 60px;
   position: relative;
+  /* transform: perspective(800px) translate(0px, -100%) rotateX(45deg); */
 }
+
 .form {
   display: flex;
   flex-direction: column;
@@ -436,8 +439,12 @@ body {
   color: var(--main-color);
 }
 
-/* -----MODAL ACTIVE*/
-.modal-active {
+/* -----MODAL OPEN*/
+.modal-open {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: all;
+  /* visibility: visible; */
+}
+.modal-open .modal-window {
+  /* transform: perspective(800px) translate(0px, 0px) rotateX(0deg); */
 }
