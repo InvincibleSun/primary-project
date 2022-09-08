@@ -1,6 +1,7 @@
 :root {
   --main-color: rgb(90, 18, 243);
   --secondary-color: rgb(173, 242, 242);
+  --white-color: #fff;
 }
 
 body {
@@ -303,7 +304,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 3px 4px rgba(134, 18, 243, 0.2), 0 3px 4px rgba(134, 18, 243, 0.24);
+  box-shadow: 0 3px 4px rgba(134, 18, 243, 0.2),
+    0 3px 4px rgba(134, 18, 243, 0.24);
 }
 
 .share-widget__icons {
@@ -340,7 +342,7 @@ body {
 
   opacity: 0;
   pointer-events: none;
-  /* visibility: hidden; */
+  visibility: hidden;
 
   transition: all 0.4s ease-in-out;
 }
@@ -350,7 +352,8 @@ body {
   border-radius: 35px;
   padding: 32px 92px 60px;
   position: relative;
-  /* transform: perspective(800px) translate(0px, -100%) rotateX(45deg); */
+  transition: all 0.4s ease-in-out;
+  transform: perspective(800px) translate(0px, -100%) rotateX(45deg);
 }
 
 .form {
@@ -362,11 +365,17 @@ body {
 
 .form__btn {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 0;
-  right: 10px;
+  width: 30px;
+  height: 30px;
+  top: 14px;
+  right: 18px;
   cursor: pointer;
+
+  border-radius: 50%;
+  transition: all 0.4s;
+}
+.form__btn:hover {
+  background-color: #ccc;
 }
 
 .form__btn-close {
@@ -382,9 +391,10 @@ body {
   background-color: #000;
   display: inline-block;
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 12px;
+  left: 4px;
   transform: rotate(45deg);
+  transition: all 0.4s;
 }
 .form__btn-close::after {
   content: "";
@@ -393,13 +403,14 @@ body {
   background-color: #000;
   display: inline-block;
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 12px;
+  left: 4px;
   transform: rotate(-45deg);
+  transition: all 0.4s;
 }
 .form__btn:hover .form__btn-close::after,
 .form__btn:hover .form__btn-close::before {
-  background-color: var(--main-color);
+  background-color: var(--white-color);
 }
 
 .form__text {
@@ -430,7 +441,13 @@ body {
   font-size: 16px;
 
   padding: 4px 8px;
+  transition: 0.5s;
 }
+
+.field-input:focus {
+  box-shadow: 0px 0px 4px 2px #bbb;
+}
+
 .button_sign-in {
   margin-top: 24px;
   padding: 15px 50px;
@@ -443,8 +460,8 @@ body {
 .modal-open {
   opacity: 1;
   pointer-events: all;
-  /* visibility: visible; */
+  visibility: visible;
 }
 .modal-open .modal-window {
-  /* transform: perspective(800px) translate(0px, 0px) rotateX(0deg); */
+  transform: perspective(800px) translate(0px, 0px) rotateX(0deg);
 }

@@ -3,8 +3,13 @@ const modalWindow = document.querySelector("#form-modal");
 const form = document.querySelector(".form");
 
 const openModalBtn = document.querySelector("#open-modal-btn");
+const modalWindowContent = document.querySelector(".modal-window");
 const signInBtn = document.querySelector(".button_sign-in");
 const closeBtn = document.querySelector(".form__btn");
+
+const emailInput = document.querySelector("#user-email");
+
+let emailTimer;
 
 openModalBtn.addEventListener("click", () => {
   openFormModal();
@@ -28,6 +33,14 @@ function clearFormFields() {
 }
 
 closeBtn.addEventListener("click", (e) => {
+  closeFormModal();
+});
+
+modalWindowContent.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+modalWindow.addEventListener("click", (e) => {
   e.stopPropagation();
   closeFormModal();
 });
@@ -36,6 +49,14 @@ document.addEventListener("keydown", function (e) {
   if (e.code === "Escape") {
     closeFormModal();
   }
+});
+
+emailInput.addEventListener("keyup", function (e) {
+  clearTimeout(emailTimer);
+
+  emailTimer = setTimeout(() => {
+    console.log(e.target.value);
+  }, 200);
 });
 
 // form.addEventListener("submit", (e) => {
