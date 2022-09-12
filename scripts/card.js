@@ -1,4 +1,5 @@
 const cardExample = document.getElementById("card-example");
+// const cardTextExample = document.getElementsByTagName("textarea");
 
 function addCard(e) {
   const cardName = prompt("Put a card name");
@@ -20,7 +21,7 @@ function addCard(e) {
   const cardsArray = storage[indexOfCurrentList].cards;
 
   const nextId = !!cardsArray.length ? cardsArray.at(-1).id + 1 : 0;
-  const newCard = { name: cardName, id: nextId };
+  const newCard = { name: cardName, id: nextId, text: "text" };
 
   drawCard(newCard, listId, parent);
 
@@ -30,13 +31,16 @@ function addCard(e) {
 }
 
 function drawCard(cardItem, listId, currentList) {
-  const { name, id } = cardItem;
+  const { name, id, text } = cardItem;
   const newCard = cardExample.cloneNode(true);
   newCard.removeAttribute("id");
   newCard.setAttribute("data-id", id);
   newCard.setAttribute("data-list-id", listId);
   const nodeTitle = newCard.querySelector(".list-card__name");
   nodeTitle.innerHTML = name;
+
+  // const nodeText = newCard.querySelector("textarea");
+  // nodeText.innerHTML = text;
 
   const addCardBtn = currentList.querySelector(".add-card");
   currentList.insertBefore(newCard, addCardBtn);

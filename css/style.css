@@ -304,8 +304,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 3px 4px rgba(134, 18, 243, 0.2),
-    0 3px 4px rgba(134, 18, 243, 0.24);
+  box-shadow: 0 3px 4px rgba(134, 18, 243, 0.2), 0 3px 4px rgba(134, 18, 243, 0.24);
 }
 
 .share-widget__icons {
@@ -324,6 +323,10 @@ body {
 }
 #card-example {
   display: none;
+}
+textarea {
+  resize: none;
+  font-size: 18px;
 }
 
 /* ----MODAL WINDOW----- */
@@ -391,8 +394,8 @@ body {
   background-color: #000;
   display: inline-block;
   position: absolute;
-  top: 12px;
-  left: 4px;
+  top: 14px;
+  left: 5px;
   transform: rotate(45deg);
   transition: all 0.4s;
 }
@@ -403,8 +406,8 @@ body {
   background-color: #000;
   display: inline-block;
   position: absolute;
-  top: 12px;
-  left: 4px;
+  top: 14px;
+  left: 5px;
   transform: rotate(-45deg);
   transition: all 0.4s;
 }
@@ -444,8 +447,9 @@ body {
   transition: 0.5s;
 }
 
-.field-input:focus {
-  box-shadow: 0px 0px 4px 2px #bbb;
+.field-input:focus,
+.field-input:active {
+  box-shadow: 0px 0px 3px 2px var(--main-color);
 }
 
 .button_sign-in {
