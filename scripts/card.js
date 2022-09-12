@@ -1,5 +1,4 @@
 const cardExample = document.getElementById("card-example");
-// const cardTextExample = document.getElementsByTagName("textarea");
 
 function addCard(e) {
   const cardName = prompt("Put a card name");
@@ -21,7 +20,7 @@ function addCard(e) {
   const cardsArray = storage[indexOfCurrentList].cards;
 
   const nextId = !!cardsArray.length ? cardsArray.at(-1).id + 1 : 0;
-  const newCard = { name: cardName, id: nextId, text: "text" };
+  const newCard = { name: cardName, id: nextId, text: "" };
 
   drawCard(newCard, listId, parent);
 
@@ -39,8 +38,9 @@ function drawCard(cardItem, listId, currentList) {
   const nodeTitle = newCard.querySelector(".list-card__name");
   nodeTitle.innerHTML = name;
 
-  // const nodeText = newCard.querySelector("textarea");
-  // nodeText.innerHTML = text;
+  const nodeText = newCard.querySelector("textarea");
+
+  nodeText.value = text;
 
   const addCardBtn = currentList.querySelector(".add-card");
   currentList.insertBefore(newCard, addCardBtn);
@@ -58,10 +58,33 @@ function removeCard(e) {
     return item.id === listId;
   });
 
-  const toDeleteIndex = storage[indexOfCurrentList].cards.findIndex((elem) => elem.id === id);
+  const toDeleteIndex = storage[indexOfCurrentList].cards.findIndex(
+    (elem) => elem.id === id
+  );
 
   if (toDeleteIndex !== -1) {
     storage[indexOfCurrentList].cards.splice(toDeleteIndex, 1);
     localStorage.setItem("store", JSON.stringify(storage));
   }
+}
+
+// textarea
+function handleText(e) {
+  const str = e.target.value;
+  const parent = e.target.closest(".list-card");
+  let { id, listId } = parent.dataset;
+  id = Number(id);
+  listId = Number(listId);
+
+  let indexOfCurrentList = storage.findIndex((item) => {
+    return item.id === listId;
+  });
+
+  const indexOfCurrentCard = storage[indexOfCurrentList].cards.findIndex(
+    (elem) => elem.id === id
+  );
+
+  storage[indexOfCurrentList].cards[indexOfCurrentCard].text = str;
+
+  localStorage.setItem("store", JSON.stringify(storage));
 }
