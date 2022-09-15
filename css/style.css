@@ -316,7 +316,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 3px 4px rgba(134, 18, 243, 0.2), 0 3px 4px rgba(134, 18, 243, 0.24);
+  box-shadow: 0 3px 4px rgba(134, 18, 243, 0.2),
+    0 3px 4px rgba(134, 18, 243, 0.24);
 }
 
 .share-widget__icons {

@@ -6,6 +6,8 @@ const modalWindowContent = document.querySelector(".modal-window");
 const signInBtn = document.querySelector(".button_sign-in");
 const closeBtns = document.querySelectorAll(".form__btn"); //+
 
+const changeTheListModal = document.getElementById("change-the-list");
+
 const emailInput = document.querySelector("#user-email");
 
 let emailTimer;

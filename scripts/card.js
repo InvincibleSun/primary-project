@@ -45,6 +45,10 @@ function drawCard(cardItem, listId, currentList) {
   currentList.insertBefore(newCard, addCardBtn);
 }
 
+function openModalChangeList() {
+  openFormModal(changeTheListModal);
+}
+
 // Card removal
 function removeCard(e) {
   const parent = e.target.closest(".list-card");
@@ -55,7 +59,9 @@ function removeCard(e) {
 
   const indexOfCurrentList = storage.findIndex((item) => item.id === listId);
 
-  const toDeleteIndex = storage[indexOfCurrentList].cards.findIndex((item) => item.id === id);
+  const toDeleteIndex = storage[indexOfCurrentList].cards.findIndex(
+    (item) => item.id === id
+  );
 
   if (toDeleteIndex !== -1) {
     storage[indexOfCurrentList].cards.splice(toDeleteIndex, 1);
@@ -66,38 +72,30 @@ function removeCard(e) {
 // textarea
 function handleText(e) {
   const str = e.target.value;
-  const parent = e.target.closest(".list-card");
-
-  let { id, listId } = parent.dataset;
-  id = Number(id);
-  listId = Number(listId);
-
-  const indexOfCurrentList = storage.findIndex((item) => item.id === listId);
-
-  const indexOfCurrentCard = storage[indexOfCurrentList].cards.findIndex((elem) => elem.id === id);
-
-  storage[indexOfCurrentList].cards[indexOfCurrentCard].text = str;
-
-  localStorage.setItem("store", JSON.stringify(storage));
+  updateText(str, e);
 }
 
 function clearField(e) {
-  let str = e.target.value;
-  str = "";
-  const parent = e.target.closest(".list-card");
-
+  const parent = updateText("", e);
   const nodeText = parent.querySelector("textarea");
   nodeText.value = "";
+}
 
+function updateText(str, e) {
+  const parent = e.target.closest(".list-card");
   let { id, listId } = parent.dataset;
   id = Number(id);
   listId = Number(listId);
 
   const indexOfCurrentList = storage.findIndex((item) => item.id === listId);
 
-  const indexOfCurrentCard = storage[indexOfCurrentList].cards.findIndex((elem) => elem.id === id);
+  const indexOfCurrentCard = storage[indexOfCurrentList].cards.findIndex(
+    (elem) => elem.id === id
+  );
 
   storage[indexOfCurrentList].cards[indexOfCurrentCard].text = str;
 
   localStorage.setItem("store", JSON.stringify(storage));
+
+  return parent;
 }
