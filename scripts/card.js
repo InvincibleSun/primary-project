@@ -39,7 +39,6 @@ function drawCard(cardItem, listId, currentList) {
   nodeTitle.innerHTML = name;
 
   const nodeText = newCard.querySelector("textarea");
-
   nodeText.value = text;
 
   const addCardBtn = currentList.querySelector(".add-card");
@@ -54,13 +53,9 @@ function removeCard(e) {
   listId = Number(listId);
   parent.remove();
 
-  let indexOfCurrentList = storage.findIndex((item) => {
-    return item.id === listId;
-  });
+  const indexOfCurrentList = storage.findIndex((item) => item.id === listId);
 
-  const toDeleteIndex = storage[indexOfCurrentList].cards.findIndex(
-    (elem) => elem.id === id
-  );
+  const toDeleteIndex = storage[indexOfCurrentList].cards.findIndex((item) => item.id === id);
 
   if (toDeleteIndex !== -1) {
     storage[indexOfCurrentList].cards.splice(toDeleteIndex, 1);
@@ -72,17 +67,35 @@ function removeCard(e) {
 function handleText(e) {
   const str = e.target.value;
   const parent = e.target.closest(".list-card");
+
   let { id, listId } = parent.dataset;
   id = Number(id);
   listId = Number(listId);
 
-  let indexOfCurrentList = storage.findIndex((item) => {
-    return item.id === listId;
-  });
+  const indexOfCurrentList = storage.findIndex((item) => item.id === listId);
 
-  const indexOfCurrentCard = storage[indexOfCurrentList].cards.findIndex(
-    (elem) => elem.id === id
-  );
+  const indexOfCurrentCard = storage[indexOfCurrentList].cards.findIndex((elem) => elem.id === id);
+
+  storage[indexOfCurrentList].cards[indexOfCurrentCard].text = str;
+
+  localStorage.setItem("store", JSON.stringify(storage));
+}
+
+function clearField(e) {
+  let str = e.target.value;
+  str = "";
+  const parent = e.target.closest(".list-card");
+
+  const nodeText = parent.querySelector("textarea");
+  nodeText.value = "";
+
+  let { id, listId } = parent.dataset;
+  id = Number(id);
+  listId = Number(listId);
+
+  const indexOfCurrentList = storage.findIndex((item) => item.id === listId);
+
+  const indexOfCurrentCard = storage[indexOfCurrentList].cards.findIndex((elem) => elem.id === id);
 
   storage[indexOfCurrentList].cards[indexOfCurrentCard].text = str;
 

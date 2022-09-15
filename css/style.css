@@ -47,7 +47,6 @@ body {
 }
 
 .header__list-link {
-  text-decoration: none;
   text-transform: uppercase;
   color: var(--main-color);
 }
@@ -216,6 +215,23 @@ body {
   font-size: 18px;
 }
 
+.list-card__options {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.list-card__options a {
+  margin: 5px 0px 5px 10px;
+  padding: 10px;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  border: 1px double var(--secondary-color);
+  color: #000;
+}
+.list-card__options a:hover {
+  background-color: var(--white-color);
+}
 /* -----FOOTER----- */
 .footer {
   padding: 10px;
@@ -249,10 +265,6 @@ body {
   font-size: 14px;
   letter-spacing: 1px;
   color: var(--main-color);
-}
-
-.share-widget__icons a {
-  text-decoration: none;
 }
 
 .share-widget__icons a svg {
@@ -347,7 +359,7 @@ textarea {
   pointer-events: none;
   visibility: hidden;
 
-  transition: all 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
 }
 
 .modal-window {
@@ -355,8 +367,8 @@ textarea {
   border-radius: 35px;
   padding: 32px 92px 60px;
   position: relative;
-  transition: all 0.4s ease-in-out;
-  transform: perspective(800px) translate(0px, -100%) rotateX(45deg);
+  transition: transform 0.4s ease-in-out;
+  transform: scale(0);
 }
 
 .form {
@@ -467,5 +479,5 @@ textarea {
   visibility: visible;
 }
 .modal-open .modal-window {
-  transform: perspective(800px) translate(0px, 0px) rotateX(0deg);
+  transform: scale(1);
 }

@@ -1,53 +1,70 @@
-const MODAL_ACTIVE_CLASS_NAME = "modal-open";
-const modalWindow = document.querySelector("#form-modal");
+const modalWindows = document.querySelectorAll(".modal"); //+
+
 const form = document.querySelector(".form");
 
-const openModalBtn = document.querySelector("#open-modal-btn");
 const modalWindowContent = document.querySelector(".modal-window");
 const signInBtn = document.querySelector(".button_sign-in");
-const closeBtn = document.querySelector(".form__btn");
+const closeBtns = document.querySelectorAll(".form__btn"); //+
 
 const emailInput = document.querySelector("#user-email");
 
 let emailTimer;
 
-openModalBtn.addEventListener("click", () => {
-  openFormModal();
-});
-
-function openFormModal() {
-  modalWindow.classList.add(MODAL_ACTIVE_CLASS_NAME);
+if (modalWindows.length > 0) {
+  modalWindows.forEach((item) => {
+    return item.addEventListener("click", function (e) {
+      const modalName = item.getAttribute("href").replace("#", "");
+      const currentModal = document.getElementById(modalName);
+      openFormModal(currentModal);
+      e.preventDefault;
+    });
+  });
 }
 
-function closeFormModal() {
-  modalWindow.classList.remove(MODAL_ACTIVE_CLASS_NAME);
-  clearFormFields();
+if (closeBtns.length > 0) {
+  closeBtns.forEach((item) => {
+    return item.addEventListener("click", function (e) {
+      closeFormModal(item.closest(".modal-bgd"));
+      e.preventDefault();
+    });
+  });
 }
 
-function clearFormFields() {
-  const modalFields = modalWindow.querySelectorAll("input");
+function openFormModal(currentModal) {
+  currentModal.classList.add("modal-open");
+  currentModal.addEventListener("click", function (e) {
+    if (!e.target.closest(".modal-window")) {
+      closeFormModal(e.target.closest(".modal-bgd"));
+    }
+  });
+}
+
+function closeFormModal(currentModal) {
+  currentModal.classList.remove("modal-open");
+  clearFormFields(currentModal);
+}
+
+function clearFormFields(currentModal) {
+  const modalFields = currentModal.querySelectorAll("input");
 
   modalFields.forEach((field) => {
     field.value = "";
   });
 }
 
-closeBtn.addEventListener("click", (e) => {
-  closeFormModal();
-});
+// modalWindowContent.addEventListener("click", (e) => {
+//   e.stopPropagation();
+// });
 
-modalWindowContent.addEventListener("click", (e) => {
-  e.stopPropagation();
-});
-
-modalWindow.addEventListener("click", (e) => {
-  e.stopPropagation();
-  closeFormModal();
-});
+// modalWindows.addEventListener("click", (e) => {
+//   e.stopPropagation();
+//   closeFormModal();
+// });
 
 document.addEventListener("keydown", function (e) {
   if (e.code === "Escape") {
-    closeFormModal();
+    const popupActive = document.querySelector(".modal-bgd.modal-open");
+    closeFormModal(popupActive);
   }
 });
 
